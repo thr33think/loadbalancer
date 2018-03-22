@@ -1,0 +1,36 @@
+# Global Configuration
+debug = true
+checkNewVersion = false
+defaultEntryPoints = ["http", "https"]
+
+# EntryPoints
+[entryPoints]
+  # HTTP
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  # HTTPS
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+# Lets Encrypt Config
+[acme]
+email = "foo.bar@lol.com"
+storage = "/acme.json"
+entryPoint = "https"
+OnHostRule = true
+
+# Traefik Web UI
+[web]
+address = ":8080"
+ReadOnly = true
+  [web.auth.basic]
+  users = ["ohler:$apr1$xBu9Hk76$unL.RVLVfNIRYEFrhPdE6."]
+
+# Docker Conf
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "docker.localhost"
+watch = true

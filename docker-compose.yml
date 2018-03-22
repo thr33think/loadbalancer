@@ -1,0 +1,22 @@
+version: '2'
+services:
+  loadbalancer:
+    image: "loadbalancer"
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    entrypoint: /entrypoint.sh
+    labels:
+      - "traefik.backend=lb"
+      - "traefik.port=8080"
+      - "traefik.frontend.rule=Host:lb.hshtg-gssr.de"
+      - "traefik.frontend.passHostHeader=true"
+    networks:
+      - prod
+    restart: always
+networks:
+  prod:
+    external: true
