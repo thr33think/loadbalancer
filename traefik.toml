@@ -18,7 +18,7 @@ defaultEntryPoints = ["http", "https"]
 # Lets Encrypt Config
 [acme]
 email = "foo.bar@lol.com"
-storage = "/acme.json"
+storage = "/tmp/acme.json"
 entryPoint = "https"
 OnHostRule = true
 [acme.httpChallenge]
