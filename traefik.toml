@@ -1,5 +1,4 @@
 # Global Configuration
-debug = true
 checkNewVersion = false
 defaultEntryPoints = ["http", "https"]
 
