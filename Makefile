@@ -1,10 +1,17 @@
+# name of the docker hub organisation
+dockerHubOrg="threethink"
+# the name of the docker image
 imageName="shit-city-loadbalancer"
+# the current git commit hash
 commitHash=$(shell git rev-parse HEAD)
 
-all: build
+all: build push
 
 build:
-	@docker build -t $(imageName):$(commitHash) .
+	@docker build -t $(dockerHubOrg)/$(imageName):$(commitHash) .
 
 build-local:
-	@docker build -t $(imageName):test .
+	docker build -t $(dockerHubOrg)/$(imageName):test .
+
+push:
+	@docker push $(dockerHubOrg)/$(imageName):$(commitHash)
