@@ -21,6 +21,8 @@ email = "foo.bar@lol.com"
 storage = "/acme.json"
 entryPoint = "https"
 OnHostRule = true
+[acme.httpChallenge]
+  entryPoint = "http"
 
 # Traefik Web UI
 [web]
