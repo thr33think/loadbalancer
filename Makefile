@@ -8,10 +8,16 @@ commitHash=$(shell git rev-parse HEAD)
 all: build push
 
 build:
-	@docker build -t $(dockerHubOrg)/$(imageName):$(commitHash) .
+	docker build -t $(dockerHubOrg)/$(imageName):$(commitHash) .
 
 build-local:
 	docker build -t $(dockerHubOrg)/$(imageName):test .
 
 push:
-	@docker push $(dockerHubOrg)/$(imageName):$(commitHash)
+	docker push $(dockerHubOrg)/$(imageName):$(commitHash)
+
+deploy:
+	docker-compose up -d
+
+recall:
+	docker-compose down
