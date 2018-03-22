@@ -23,13 +23,11 @@ entryPoint = "https"
 OnHostRule = true
 [acme.httpChallenge]
   entryPoint = "http"
-
+  
 # Traefik Web UI
 [web]
 address = ":8080"
 ReadOnly = true
-  [web.auth.basic]
-  users = ["ohler:$apr1$xBu9Hk76$unL.RVLVfNIRYEFrhPdE6."]
 
 # Docker Conf
 [docker]
