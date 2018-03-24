@@ -14,10 +14,10 @@ build-local:
 	docker build -t $(dockerHubOrg)/$(imageName):test .
 
 push:
-	docker push $(dockerHubOrg)/$(imageName):$(commitHash)
+	@docker push $(dockerHubOrg)/$(imageName):$(commitHash)
 
 deploy:
-	docker-compose up -d
+	TAG=$(commitHash) docker-compose up -d
 
 recall:
 	docker-compose down
