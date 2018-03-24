@@ -9,7 +9,7 @@ To register your container with the loadbalancer your `docker-compose` file need
 
 ### Labels
 
-> Mandertory:
+> Mandatory:
 >- traefik.enable=true
 >- traefik.backend
 >- traefik.port
