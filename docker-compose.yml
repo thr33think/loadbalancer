@@ -1,7 +1,7 @@
 version: '2'
 services:
   loadbalancer:
-    image: "threethink/shit-city-loadbalancer:e63043b98d1d65db16029c5a22523125682ca216"
+    image: "threethink/shit-city-loadbalancer:${TAG}"
     ports:
       - "80:80"
       - "8080:8080"
