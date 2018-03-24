@@ -1,22 +1,23 @@
 version: '2'
 services:
   loadbalancer:
-    image: "threethink/shit-city-loadbalancer:8dad3e1ae7e997b0ff27be450bd3997bda9d00b1"
+    image: "threethink/shit-city-loadbalancer:e63043b98d1d65db16029c5a22523125682ca216"
     ports:
       - "80:80"
       - "8080:8080"
       - "443:443"
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/data/traefik:/tmp/"
     labels:
       - "traefik.backend=lb"
       - "traefik.port=8080"
       - "traefik.frontend.rule=Host:lb.andimenge.de"
       - "traefik.frontend.passHostHeader=true"
-      - "traefik.frontend.auth.basic=ohler:$apr1$xBu9Hk76$unL.RVLVfNIRYEFrhPdE6."
-    # networks:
-    #   - ingress
+      - "traefik.frontend.auth.basic=ops:$$apr1$$Pi7zGg1E$$UkbSPqeVClc0DaEAgQ3i0/" #escape single $ with $$
+    networks:
+      - production
     restart: always
-# networks:
-#   ingress:
-#     external: true
+networks:
+  production:
+    external: true
