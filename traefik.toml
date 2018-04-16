@@ -8,6 +8,7 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.http]
   address = ":80"
     [entryPoints.http.redirect]
+    permanent = true
     entryPoint = "https"
   # HTTPS
   [entryPoints.https]
