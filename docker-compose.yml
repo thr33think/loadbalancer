@@ -13,9 +13,8 @@ services:
       - "traefik.enable=true"
       - "traefik.backend=lb"
       - "traefik.port=8080"
-      - "traefik.frontend.rule=Host:lb.andimenge.de"
+      - "traefik.frontend.rule=Host:lb.turds.dog"
       - "traefik.frontend.passHostHeader=true"
-      - "traefik.frontend.auth.basic=ops:$$apr1$$Pi7zGg1E$$UkbSPqeVClc0DaEAgQ3i0/" #escape single $ with $$
     networks:
       - production
     restart: always

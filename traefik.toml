@@ -8,11 +8,21 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.http]
   address = ":80"
     [entryPoints.http.redirect]
+    permanent = true
     entryPoint = "https"
   # HTTPS
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
+
+  # WEB UI (API)
+  [entryPoints.api]
+    address=":8080"
+    [entryPoints.api.auth]
+      [entryPoints.api.auth.basic]
+        users = [
+          "ops:$apr1$Pi7zGg1E$UkbSPqeVClc0DaEAgQ3i0/"
+        ]
 
 # Lets Encrypt Config
 [acme]
@@ -22,11 +32,17 @@ entryPoint = "https"
 OnHostRule = true
 [acme.httpChallenge]
   entryPoint = "http"
-  
-# Traefik Web UI
-[web]
-address = ":8080"
-ReadOnly = true
+
+# Activate API and Dashboard
+[api]
+  entryPoint = "api"
+  dashboard = true
+[api.statistics]
+  # Number of recent errors logged.
+  #
+  # Default: 10
+  #
+  recentErrors = 10
 
 # Docker Conf
 [docker]
