@@ -5,12 +5,12 @@ imageName="shit-city-loadbalancer"
 # the current git commit hash
 commitHash=$(shell git rev-parse HEAD)
 
-all: build push
+all: build
 
 build:
 	docker build -t $(dockerHubOrg)/$(imageName):$(commitHash) .
 
-build-local:
+local-build:
 	docker build -t $(dockerHubOrg)/$(imageName):test .
 
 push:
