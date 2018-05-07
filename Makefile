@@ -8,7 +8,7 @@ commitHash=$(shell git rev-parse HEAD)
 all: build
 
 build:
-	docker build -t $(dockerHubOrg)/$(imageName):$(commitHash) .
+	docker build --pull -t $(dockerHubOrg)/$(imageName):$(commitHash) .
 
 local-build:
 	docker build -t $(dockerHubOrg)/$(imageName):test .
